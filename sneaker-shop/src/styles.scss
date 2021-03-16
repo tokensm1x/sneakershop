@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-paginator-container {
+  justify-content: center !important;
+}
+
+.mat-paginator-page-size {
+  display: none !important;
+}
+
+mat-paginator {
+  position: fixed;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100%;
+  background-color: #267cd1 !important;
+  padding: 10px 0;
+  color: white !important;
+}
+
+
+body {
+  background-color: rgb(189, 199, 199);
+}
+
+.mat-paginator-range-actions .mat-icon-button {
+  background: none;
+  color: white;
+}

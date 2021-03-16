@@ -1,0 +1,23 @@
+<mat-spinner *ngIf="!loaded" diameter="80" class="spinner" style="margin: 120px auto;"></mat-spinner>
+<div *ngIf="sneaker" style="margin-top: 120px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+  <h2 style="font-size: 35px;">{{sneaker.brand}} {{sneaker.name}}</h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <img  src="https://raw.githubusercontent.com/tokensm1x/images/images/sneakers/{{sneaker.img}}.jpg" alt="img"
+        style="width: 250px;">
+    <div style="display: flex; flex-direction: column; margin: 0 10px; justify-content: space-between;">
+      <span>Price : <strong>{{sneaker.price}} $</strong></span>
+      <span>Color: <strong>{{sneaker.color}}</strong></span>
+      <span>Gender: <strong>for {{sneaker.gender}}</strong></span>
+      <span>In stock: <strong>{{sneaker.stock}} pairs</strong></span>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose size</mat-label>
+        <mat-select [(ngModel)]="selectedValue">
+          <mat-option *ngFor="let size of sneaker.size" [value]="size">
+            {{size}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="chooseSize()"><span style="font-size: 16px;" (click)="addCart()">Add in cart</span></button>
+    </div>
+  </div>
+</div>

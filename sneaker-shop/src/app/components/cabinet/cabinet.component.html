@@ -1,1 +1,10 @@
-<p>cabinet works!</p>
+<mat-spinner *ngIf="!loaded" diameter="80" class="spinner" style="margin: 120px auto;"></mat-spinner>
+<div style="margin-top: 120px; width: 100%; display: flex; flex-direction: column; align-items: center;
+            height: 300px; justify-content: space-between;" *ngIf=loaded>
+  <h2>Cabinet</h2>
+  <span>Email: <strong>{{ user.email }}</strong></span>
+  <span>Cash: <strong>{{user.cash}} $</strong></span>
+  <button mat-raised-button color="primary">Purchase history</button>
+  <button mat-raised-button color="primary" routerLink="/cart">Shopping cart</button>
+  <button mat-raised-button color="primary">Change password</button>
+</div>

@@ -1,6 +1,6 @@
 <div class="header">
   <h1 routerLink="/shop" style="outline: none; cursor: pointer;">Sneaker shop</h1>
-  <div class="header_links">
+  <div class="header_links" *ngIf="auth.loggedIn()">
     <button mat-icon-button routerLink="/shop">
       <mat-icon>store</mat-icon>
     </button>
@@ -10,8 +10,12 @@
     <button mat-icon-button routerLink="/cart">
       <mat-icon>shopping_cart</mat-icon>
     </button>
-    <button mat-icon-button routerLink="/login">
+    <button mat-icon-button routerLink="/login" (click)="auth.logoutUser()">
       <mat-icon>logout</mat-icon>
     </button>
+  </div>
+  <div class="header_links" *ngIf="!auth.loggedIn()">
+    <button routerLink="/login" mat-button>Login</button>
+    <button routerLink="/registration" mat-button>Register</button>
   </div>
 </div>

@@ -1,1 +1,61 @@
-<p>cart works!</p>
+<div style="width:100%; display: flex; justify-content: space-between; margin-top: 120px; overflow: hidden;">
+  <div style=" width: 50%; padding: 20px;">
+    <div *ngFor="let sneaker of cartSneakers" routerLink="/sneakers/{{sneaker.id}}" style="outline: none; cursor: pointer;
+    border: 1px solid black; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <img src="https://raw.githubusercontent.com/tokensm1x/images/images/sneakers/{{sneaker.img}}.jpg" alt=""
+            style="width:100px">
+      <span style="font-size: 20px; font-weight: bold;">{{sneaker.brand}} {{sneaker.name}}</span>
+      <span>Size: 40</span>
+      <div style="display: flex; flex-direction: column; margin-right: 20px;">
+        <span style="margin-bottom: 10px;">Price: {{sneaker.price}} $</span>
+        <span>Quantity: 3</span>
+      </div>
+    </div>
+    <div >
+      <span style="font-size: 25px; font-weight: bold;">Total price: </span>
+    </div>
+  </div>
+  <div style="display: flex;flex-direction: column; align-items: center; width: 50%;">
+    <form class="example-form" style="width: 100%; display: flex;
+    flex-direction: column; align-items: center; margin-bottom: 20px;">
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>First name</mat-label>
+          <input matInput>
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput>
+        </mat-form-field></td>
+      </tr></table>
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Ex. 100 Main St">
+          </mat-form-field>
+        </td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Ex. San Francisco">
+        </mat-form-field></td>
+      </tr></table>
+      <mat-form-field class="example-full-width">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+375 &nbsp;</span>
+        <input type="tel" matInput placeholder="255556677">
+      </mat-form-field>
+    </form>
+    <section class="example-section" style="display: flex; width: 60%; justify-content: space-evenly; margin-bottom: 40px;">
+      <label class="example-margin" style="font-size: 20px; font-weight: bold;">Payment:</label>
+      <mat-radio-group style="display: flex; width: 50%; justify-content: space-evenly;">
+        <mat-radio-button class="example-margin" value="after">On delivery</mat-radio-button>
+        <mat-radio-button class="example-margin" value="before">Online</mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <button mat-raised-button color="primary" style="width: 50%;">BUY</button>
+  </div>
+
+</div>
+
+

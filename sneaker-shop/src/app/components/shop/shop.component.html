@@ -1,1 +1,14 @@
-
+<div class="store_container" style="margin-top: 100px; height: 100%; display: flex; flex-direction: column; justify-content: space-evenly;">
+  <h3 class="mat-display-1" *ngIf="loaded" style="font-size: 35px; color: white;;">Shop</h3>
+  <div class="cards">
+    <mat-spinner *ngIf="!loaded" diameter="80" class="spinner"></mat-spinner>
+    <mat-card *ngFor="let sneaker of pageSneakers" class="module" routerLink="/sneakers/{{sneaker.id}}">
+      <h4 >{{sneaker.brand}} {{sneaker.name}}</h4>
+      <div class="item_info crop">
+        <img  src="https://raw.githubusercontent.com/tokensm1x/images/images/sneakers/{{sneaker.img}}.jpg" alt="img">
+      </div>
+      <span class="price">Price: <strong>{{sneaker.price}}</strong> $</span>
+    </mat-card>
+  </div>
+<mat-paginator #paginator [length]="15" [pageSize]="5" (click)="changePage(paginator)"></mat-paginator>
+</div>

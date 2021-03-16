@@ -1,1 +1,29 @@
-<p>registration works!</p>
+<div class="register" style="margin-top: 120px;">
+  <h1 style="color: rgb(34, 34, 34);">Sign Up</h1>
+  <form class="example-form form-register">
+    <mat-form-field class="example-full-width">
+      <mat-label>email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput [formControl]="passwordFormControl">
+      <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+        Minimum 6 characters
+      </mat-error>
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="passwordFormControl.hasError('pattern')">
+        a-zA-Z0-9_
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="registerUser()" [disabled]="passwordFormControl.invalid || emailFormControl.invalid">Register</button>
+</div>
