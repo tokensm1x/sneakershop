@@ -1,0 +1,19 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #267cd1;
+  color: white;
+  font-weight: 600;
+  padding: 5px 15px;
+}
+
+@media screen and(max-width:450px) {
+  .toolbar {
+    height: 120px;
+  }
+}

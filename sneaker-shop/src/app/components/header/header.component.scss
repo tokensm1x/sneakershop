@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header_links {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin-right: 10px;
+}
+
+@media screen and(max-width:450px) {
+  .header {
+    justify-content: center;
+  }
+}
