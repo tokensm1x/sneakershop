@@ -43,11 +43,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         if(err.status === 401){
-          if(localStorage.getItem('lang') === 'ru') {
-            alert('Неправильный логин или пароль')
-          } else {
             alert('Incorrect login or password')
-          }
         };
         console.error(err);
       }

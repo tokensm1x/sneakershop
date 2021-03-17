@@ -32,6 +32,11 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { PasswordComponent } from './components/password/password.component';
+import { DialogMoneyComponent } from './components/dialog-money/dialog-money.component';
+import { DialogBuyComponent } from './components/dialog-buy/dialog-buy.component';
+import { HistoryComponent } from './components/history/history.component';
 
 
 
@@ -50,7 +55,11 @@ import { MatRadioModule } from '@angular/material/radio';
     RegistrationComponent,
     CabinetComponent,
     CartComponent,
-    SneakerDetailComponent
+    SneakerDetailComponent,
+    PasswordComponent,
+    DialogMoneyComponent,
+    DialogBuyComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +78,9 @@ import { MatRadioModule } from '@angular/material/radio';
     ReactiveFormsModule,
     MatInputModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [SneakersService, AuthGuard, AuthService,{
     provide: HTTP_INTERCEPTORS,

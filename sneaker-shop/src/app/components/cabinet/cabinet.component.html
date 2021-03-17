@@ -4,7 +4,7 @@
   <h2>Cabinet</h2>
   <span>Email: <strong>{{ user.email }}</strong></span>
   <span>Cash: <strong>{{user.cash}} $</strong></span>
-  <button mat-raised-button color="primary">Purchase history</button>
+  <button mat-raised-button color="primary" routerLink="/history">Purchase history</button>
   <button mat-raised-button color="primary" routerLink="/cart">Shopping cart</button>
-  <button mat-raised-button color="primary">Change password</button>
+  <button mat-raised-button color="primary" (click)="openDialog()">Change password</button>
 </div>

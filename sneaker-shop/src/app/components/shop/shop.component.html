@@ -1,5 +1,47 @@
 <div class="store_container" style="margin-top: 100px; height: 100%; display: flex; flex-direction: column; justify-content: space-evenly;">
   <h3 class="mat-display-1" *ngIf="loaded" style="font-size: 35px; color: white;;">Shop</h3>
+  <mat-expansion-panel  style="margin: 20px 45px;">
+    <mat-expansion-panel-header style="align-items: center;">
+
+      <mat-panel-description style="justify-content: flex-end; align-items: center;">
+        Filter & Search
+        <mat-icon style="margin-left: 10px;">search</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class ="container" style="display: flex; width: 100%; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <mat-form-field class="example-form-field search">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [(ngModel)]="searchValue">
+        <button mat-button *ngIf="searchValue" matSuffix mat-icon-button (click)="search()">
+          <mat-icon >search</mat-icon>
+        </button>
+      </mat-form-field>
+      <div style="display: flex; justify-content: center; align-items: center;" class="check_btn">
+        <section class="example-section color_check" style=" margin-right: 50px; display: flex;">
+          <label class="example-margin" style="margin-right: 15px; font-weight: bold;">Color:</label>
+          <mat-radio-group [(ngModel)]="color" class="color_check_btn">
+            <mat-radio-button class="example-margin" value="white" style="margin-right: 21px;">White</mat-radio-button>
+            <mat-radio-button class="example-margin" value="black" style="margin-right: 10px;">Black</mat-radio-button>
+            <mat-radio-button class="example-margin" value="gray" >Gray</mat-radio-button>
+          </mat-radio-group>
+        </section>
+        <section class="example-section color_check" >
+          <label class="example-margin" style="margin-right: 11px; font-weight: bold;">Brand:</label>
+          <mat-radio-group [(ngModel)]="brand" class="color_check_btn">
+            <mat-radio-button class="example-margin" value="Adidas" style="margin-right: 15px;">Adidas</mat-radio-button>
+            <mat-radio-button class="example-margin" value="Nike" style="margin-right: 15px;">Nike</mat-radio-button>
+            <mat-radio-button class="example-margin" value="Puma">Puma</mat-radio-button>
+          </mat-radio-group>
+        </section>
+     </div>
+     <div style="display: flex;" class="buttons">
+      <button mat-raised-button color="primary"  (click)="filter()">Filter</button>
+      <button mat-raised-button color="primary"  style="margin-left: 10px;" (click)="resetFilters()">Reset</button>
+     </div>
+    </div>
+
+  </mat-expansion-panel>
+  <p *ngIf="empty" style="font-size:40px; margin: 0 auto;">No results</p>
   <div class="cards">
     <mat-spinner *ngIf="!loaded" diameter="80" class="spinner"></mat-spinner>
     <mat-card *ngFor="let sneaker of pageSneakers" class="module" routerLink="/sneakers/{{sneaker.id}}">
@@ -10,5 +52,5 @@
       <span class="price">Price: <strong>{{sneaker.price}}</strong> $</span>
     </mat-card>
   </div>
-<mat-paginator #paginator [length]="15" [pageSize]="5" (click)="changePage(paginator)"></mat-paginator>
+<mat-paginator #paginator [length]="paginatorLength" [pageSize]="5" (click)="changePage(paginator)"></mat-paginator>
 </div>

@@ -1,59 +1,88 @@
-<div style="width:100%; display: flex; justify-content: space-between; margin-top: 120px; overflow: hidden;">
-  <div style=" width: 50%; padding: 20px;">
+<div *ngIf="!cartClear" style="margin-top: 120px; width: 100%; display: flex; justify-content: center; font-size: 30px; font-weight: bold;" class="container">CART IS CLEAR</div>
+<div *ngIf="cartClear" style="margin-top: 120px; width: 100%; display: flex; justify-content: center; font-size: 30px; font-weight: bold;" class="container">CART</div>
+<div style="width:100%; display: flex; justify-content: space-between; overflow: hidden;" class="mobile">
+
+  <div *ngIf="cartClear" style=" width: 50%; padding: 20px;" class="sneakers">
+    <mat-spinner *ngIf="!loaded" diameter="80" class="spinner" style="margin: 0 auto;"></mat-spinner>
     <div *ngFor="let sneaker of cartSneakers" routerLink="/sneakers/{{sneaker.id}}" style="outline: none; cursor: pointer;
     border: 1px solid black; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
       <img src="https://raw.githubusercontent.com/tokensm1x/images/images/sneakers/{{sneaker.img}}.jpg" alt=""
             style="width:100px">
-      <span style="font-size: 20px; font-weight: bold;">{{sneaker.brand}} {{sneaker.name}}</span>
-      <span>Size: 40</span>
-      <div style="display: flex; flex-direction: column; margin-right: 20px;">
+      <div style="display: flex; width: 80%; align-items: center; justify-content: space-between; padding: 0 20px;" class="mobile_info">
+        <span style="font-size: 20px; font-weight: bold;">{{sneaker.brand}} {{sneaker.name}}</span>
+        <span>Size: {{sneaker.size}}</span>
+        <div style="display: flex; flex-direction: column;">
         <span style="margin-bottom: 10px;">Price: {{sneaker.price}} $</span>
-        <span>Quantity: 3</span>
+        <span>Quantity: {{sneaker.stock}}</span>
+      </div>
+
       </div>
     </div>
-    <div >
-      <span style="font-size: 25px; font-weight: bold;">Total price: </span>
+    <div style="display: flex;justify-content: space-between;">
+      <span style="font-size: 25px; font-weight: bold;" class="price">Total price: {{price}} $</span>
+      <button mat-raised-button color="primary" (click)="clearCart()">Clear cart</button>
     </div>
   </div>
-  <div style="display: flex;flex-direction: column; align-items: center; width: 50%;">
+  <div style="display: flex;flex-direction: column; align-items: center; width: 50%;" *ngIf="cartClear" class="form">
     <form class="example-form" style="width: 100%; display: flex;
     flex-direction: column; align-items: center; margin-bottom: 20px;">
-      <table class="example-full-width" cellspacing="0"><tr>
+      <table class="example-full-width" cellspacing="0"><tr class="form_mobile">
         <td><mat-form-field class="example-full-width">
           <mat-label>First name</mat-label>
-          <input matInput>
+          <input matInput [formControl]="nameControl">
+          <mat-error *ngIf="nameControl.hasError('required')">
+            First name is required
+          </mat-error>
         </mat-form-field></td>
         <td><mat-form-field class="example-full-width">
           <mat-label>Last Name</mat-label>
-          <input matInput>
+          <input matInput [formControl]="nameLastControl">
+          <mat-error *ngIf="nameLastControl.hasError('required')">
+            Last name is required
+          </mat-error>
         </mat-form-field></td>
       </tr></table>
-      <table class="example-full-width" cellspacing="0"><tr>
+      <table class="example-full-width" cellspacing="0"><tr class="form_mobile">
         <td>
           <mat-form-field class="example-full-width">
             <mat-label>Address</mat-label>
-            <input matInput placeholder="Ex. 100 Main St">
+            <input matInput placeholder="Ex. 100 Main St" [formControl]="addressControl">
+            <mat-error *ngIf="addressControl.hasError('required')">
+              Address is required
+            </mat-error>
           </mat-form-field>
         </td>
         <td><mat-form-field class="example-full-width">
           <mat-label>City</mat-label>
-          <input matInput placeholder="Ex. San Francisco">
+          <input matInput placeholder="Ex. San Francisco" [formControl]="cityControl">
+          <mat-error *ngIf="cityControl.hasError('required')">
+            City is required
+          </mat-error>
         </mat-form-field></td>
       </tr></table>
       <mat-form-field class="example-full-width">
         <mat-label>Telephone</mat-label>
         <span matPrefix>+375 &nbsp;</span>
-        <input type="tel" matInput placeholder="255556677">
+        <input type="tel" matInput placeholder="255556677" [formControl]="telControl">
+        <mat-error *ngIf="telControl.hasError('pattern')">
+          Enter correct telephone
+        </mat-error>
+        <mat-error *ngIf="telControl.hasError('required')">
+          Telephone is required
+        </mat-error>
+        <mat-error *ngIf="telControl.hasError('minlength')">
+          Min length is 9
+        </mat-error>
       </mat-form-field>
     </form>
-    <section class="example-section" style="display: flex; width: 60%; justify-content: space-evenly; margin-bottom: 40px;">
+    <section *ngIf="false" class="example-section" style="display: flex; width: 60%; justify-content: space-evenly; margin-bottom: 40px;">
       <label class="example-margin" style="font-size: 20px; font-weight: bold;">Payment:</label>
-      <mat-radio-group style="display: flex; width: 50%; justify-content: space-evenly;">
+      <mat-radio-group style="display: flex; width: 50%; justify-content: space-evenly;" [(ngModel)]="payment">
         <mat-radio-button class="example-margin" value="after">On delivery</mat-radio-button>
         <mat-radio-button class="example-margin" value="before">Online</mat-radio-button>
       </mat-radio-group>
     </section>
-    <button mat-raised-button color="primary" style="width: 50%;">BUY</button>
+    <button mat-raised-button color="primary" style="width: 50%;" [disabled]="telControl.invalid || nameControl.invalid || nameLastControl.invalid || cityControl.invalid || addressControl.invalid" (click)="buy()">BUY</button>
   </div>
 
 </div>

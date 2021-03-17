@@ -1,1 +1,31 @@
 
+@media screen and (max-width: 1000px) {
+  .mobile {
+    flex-direction: column !important;
+  }
+  .sneakers, .form {
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .container {
+    margin-top: 140px !important;
+  }
+
+  .form_mobile {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .price {
+    font-size: 20px !important;
+  }
+
+  .mobile_info {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}

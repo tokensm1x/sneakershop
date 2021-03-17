@@ -3,8 +3,11 @@
   <h2 style="font-size: 35px;">{{sneaker.brand}} {{sneaker.name}}</h2>
   <div style="display: flex; flex-wrap: wrap; justify-content: center;">
     <img  src="https://raw.githubusercontent.com/tokensm1x/images/images/sneakers/{{sneaker.img}}.jpg" alt="img"
-        style="width: 250px;">
-    <div style="display: flex; flex-direction: column; margin: 0 10px; justify-content: space-between;">
+        [style]="styleImg" (mouseover)="enlargeImg()">
+        <button mat-icon-button *ngIf="opened" style="position: absolute; z-index: 600; margin-left: 400px; color: white;" (click)="decreaseImg()">
+          <mat-icon>close_fullscreen</mat-icon>
+        </button>
+    <div style="display: flex; flex-direction: column; margin: 0 10px; justify-content: space-between; height: 300px;">
       <span>Price : <strong>{{sneaker.price}} $</strong></span>
       <span>Color: <strong>{{sneaker.color}}</strong></span>
       <span>Gender: <strong>for {{sneaker.gender}}</strong></span>

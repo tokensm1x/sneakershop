@@ -1,0 +1,10 @@
+@media screen and (max-width: 500px) {
+  .mobile_info {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .brand {
+    font-size: 17px !important;
+  }
+}
