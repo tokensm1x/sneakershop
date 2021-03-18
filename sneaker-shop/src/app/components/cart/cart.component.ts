@@ -57,6 +57,7 @@ export class CartComponent implements OnInit {
     this.userService.getUserCart().subscribe(
       sneakers => {
         this.sneakersCart = sneakers;
+        console.log(this.sneakersCart)
         let arr = this.sneakersCart.map( el => el.id)
         this.cartSneakers = this.sneakers.filter( (el, i) => {
           if(arr.includes(el.id)) {

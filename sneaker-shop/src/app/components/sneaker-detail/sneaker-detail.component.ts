@@ -21,9 +21,7 @@ export class SneakerDetailComponent implements OnInit {
 
   opened: boolean = false;
 
-  styleImg: string = 'width:200px;'
-
-
+  styleImg: string = 'width:200px; max-height: 266px; cursor: pointer'
 
   constructor(private route: ActivatedRoute,
               private sneakerService: SneakersService,
@@ -56,18 +54,20 @@ export class SneakerDetailComponent implements OnInit {
     let size = this.selectedValue;
     let num = 1;
     this.userService.updateUserCart({id, size, num}).subscribe();
-    this.router.navigate(['/cart']);
+    setTimeout(() => {
+      this.router.navigate(['/cart']);
+    }, 500);
   }
 
   enlargeImg(): void {
-    this.styleImg = 'width:350px; position: absolute; transition: .7s; z-index: 500;'
-    this.opened = true;
+    this.opened = !this.opened;
+    if(this.opened) {
+      this.styleImg = 'width:300px; position: absolute; transition: .7s; z-index: 500; cursor:pointer;'
+    } else {
+      this.styleImg = 'width:200px; position: static;transition: .7s; max-height: 266px; cursor: pointer';
+    }
   }
 
-  decreaseImg(): void {
-      this.styleImg = 'width:250px; position: static;transition: .5s';
-      this.opened = false;
-  }
 
 }
 

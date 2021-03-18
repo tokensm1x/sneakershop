@@ -3,20 +3,17 @@
   <h2 style="font-size: 35px;">{{sneaker.brand}} {{sneaker.name}}</h2>
   <div style="display: flex; flex-wrap: wrap; justify-content: center;">
     <img  src="https://raw.githubusercontent.com/tokensm1x/images/images/sneakers/{{sneaker.img}}.jpg" alt="img"
-        [style]="styleImg" (mouseover)="enlargeImg()">
-        <button mat-icon-button *ngIf="opened" style="position: absolute; z-index: 600; margin-left: 400px; color: white;" (click)="decreaseImg()">
-          <mat-icon>close_fullscreen</mat-icon>
-        </button>
-    <div style="display: flex; flex-direction: column; margin: 0 10px; justify-content: space-between; height: 300px;">
+        [style]="styleImg" (click)="enlargeImg()">
+    <div style="transition: .7s; display: flex; flex-direction: column; margin: 0 10px; justify-content: space-between; height: 300px;">
       <span>Price : <strong>{{sneaker.price}} $</strong></span>
       <span>Color: <strong>{{sneaker.color}}</strong></span>
       <span>Gender: <strong>for {{sneaker.gender}}</strong></span>
-      <span>In stock: <strong>{{sneaker.stock}} pairs</strong></span>
+      <!--<span>In stock: <strong>{{sneaker.stock}} pairs</strong></span> -->
       <mat-form-field appearance="fill">
         <mat-label>Choose size</mat-label>
         <mat-select [(ngModel)]="selectedValue">
-          <mat-option *ngFor="let size of sneaker.size" [value]="size">
-            {{size}}
+          <mat-option  value="41">
+            41
           </mat-option>
         </mat-select>
       </mat-form-field>

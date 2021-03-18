@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sneakers/:id', component: SneakerDetailComponent, canActivate: [AuthGuard] },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'history', component: HistoryComponent }
+  { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] }
 
 ];
 
