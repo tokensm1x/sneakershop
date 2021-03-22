@@ -39,6 +39,8 @@ export class ShopComponent implements OnInit {
 
   empty: boolean = false;
 
+  allShops : string[] = ["OMGShop", "StockShop", "AMShop", "FLShop"]
+
   constructor(private sneakersService: SneakersService) { }
 
   ngOnInit(): void {

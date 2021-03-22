@@ -39,6 +39,8 @@ export class ShopsComponent implements OnInit {
 
   empty: boolean = false;
 
+  allShops : string[] = ["OMGShop", "StockShop", "AMShop", "FLShop"]
+
   constructor(private route: ActivatedRoute,
     private sneakersService: SneakersService) { }
 

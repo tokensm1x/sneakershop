@@ -19,10 +19,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Choose a shop</mat-label>
         <mat-select [(ngModel)]="shop">
-          <mat-option value="OMGShop" routerLink="/shops/OMGShop">OMGShop</mat-option>
-          <mat-option value="StockShop" routerLink="/shops/StockShop">StockShop</mat-option>
-          <mat-option value="AMShop" routerLink="/shops/AMShop">AMShop</mat-option>
-          <mat-option value="FLShop" routerLink="/shops/FLShop">FLShop</mat-option>
+          <mat-option *ngFor="let shopp of allShops" [value]="shopp" routerLink="/shops/{{shopp}}" (click)="getSneakers()">{{shopp}}</mat-option>
         </mat-select>
       </mat-form-field>
       <div style="display: flex; justify-content: center; align-items: center;" class="check_btn">
