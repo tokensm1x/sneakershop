@@ -63,11 +63,13 @@ export class CartComponent implements OnInit {
           if(arr.includes(el.id)) {
             el.size = this.sneakersCart[arr.indexOf(el.id)].size;
             el.stock = this.sneakersCart[arr.indexOf(el.id)].num;
+            el.shops = this.sneakersCart[arr.indexOf(el.id)].shop;
           }
           return arr.includes(el.id);
         })
         this.loaded = !this.loaded;
         this.totalPrice();
+        console.log(this.cartSneakers)
       }
     )
   }
@@ -148,6 +150,15 @@ export class CartComponent implements OnInit {
       }
       info.date = `${day}.${month}.${date.getFullYear()}`;
       let buySneakers = this.cartSneakers;
+      if(localStorage.getItem(`buy`)) {
+        let buy = JSON.parse(localStorage.getItem(`buy`));
+        console.log(buy)
+        buy = [...buy, ...this.cartSneakers];
+        localStorage.setItem('buy', JSON.stringify(buy));
+      } else {
+        let buy = this.cartSneakers;
+        localStorage.setItem('buy', JSON.stringify(buy));
+      }
       this.userService.userBuy({info: info, buy: buySneakers}).subscribe(
         req => {
         }, err => {

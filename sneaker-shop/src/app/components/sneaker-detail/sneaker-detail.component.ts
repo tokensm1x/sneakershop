@@ -15,11 +15,15 @@ export class SneakerDetailComponent implements OnInit {
 
   selectedValue: number | undefined;
 
+  selectedShop: number | undefined;
+
   loaded: boolean = false;
 
   buttonActive: boolean = true;
 
   opened: boolean = false;
+
+  shops;
 
   styleImg: string = 'width:200px; max-height: 266px; cursor: pointer'
 
@@ -31,6 +35,7 @@ export class SneakerDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getHero();
 
+
   }
 
   getHero(): void {
@@ -39,21 +44,38 @@ export class SneakerDetailComponent implements OnInit {
       .subscribe(sneaker => {
         this.sneaker = sneaker;
         this.loaded = !this.loaded;
+        console.log(this.sneaker)
+        this.shops =  this.sneaker.shops;
+        this.removeShop();
       })
   }
 
   chooseSize(): boolean {
-    if(this.selectedValue) {
+    if(this.selectedValue && this.selectedShop) {
       return false;
     }
     return true;
   }
 
+  removeShop() : void {
+    if(localStorage.getItem('buy')) {
+      let buy = JSON.parse(localStorage.getItem('buy'));
+      console.log(buy)
+      buy.forEach(el => {
+        if(this.sneaker.id === el.id) {
+          this.sneaker.shops.splice(this.sneaker.shops.indexOf(el.shops), 1);
+          console.log(this.sneaker)
+        }
+      })
+    }
+  }
+
   addCart(): void {
     let id = this.sneaker.id;
     let size = this.selectedValue;
+    let shop = this.selectedShop;
     let num = 1;
-    this.userService.updateUserCart({id, size, num}).subscribe();
+    this.userService.updateUserCart({id, size, num, shop}).subscribe();
     setTimeout(() => {
       this.router.navigate(['/cart']);
     }, 500);

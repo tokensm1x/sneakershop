@@ -16,13 +16,13 @@
           <mat-icon >search</mat-icon>
         </button>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" >
         <mat-label>Choose a shop</mat-label>
-        <mat-select [(ngModel)]="shop">
-          <mat-option value="OMGShop" routerLink="/shops/OMGShop">OMGShop</mat-option>
-          <mat-option value="StockShop" routerLink="/shops/StockShop">StockShop</mat-option>
-          <mat-option value="AMShop" routerLink="/shops/AMShop">AMShop</mat-option>
-          <mat-option value="FLShop" routerLink="/shops/FLShop">FLShop</mat-option>
+        <mat-select [(ngModel)]="shop" (change)="getShop()">
+          <mat-option value="OMGShop" routerLink="/shops/OMGShop" (click)="getSneakers()">OMGShop</mat-option>
+          <mat-option value="StockShop" routerLink="/shops/StockShop" (click)="getSneakers()">StockShop</mat-option>
+          <mat-option value="AMShop" routerLink="/shops/AMShop" (click)="getSneakers()">AMShop</mat-option>
+          <mat-option value="FLShop" routerLink="/shops/FLShop" (click)="getSneakers()">FLShop</mat-option>
         </mat-select>
       </mat-form-field>
       <div style="display: flex; justify-content: center; align-items: center;" class="check_btn">
@@ -52,7 +52,7 @@
   </mat-expansion-panel>
   <p *ngIf="empty" style="font-size:40px; margin: 0 auto;">No results</p>
   <div class="cards">
-    <mat-spinner *ngIf="!loaded" diameter="80" class="spinner"></mat-spinner>
+
     <mat-card *ngFor="let sneaker of pageSneakers" class="module" routerLink="/sneakers/{{sneaker.id}}">
       <h4 >{{sneaker.brand}} {{sneaker.name}}</h4>
       <div class="item_info crop">

@@ -8,4 +8,5 @@ export interface Sneaker {
   price: number;
   stock: number;
   img: string;
-}
+  shops: any;
+} 

@@ -17,6 +17,14 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose shop</mat-label>
+        <mat-select [(ngModel)]="selectedShop">
+          <mat-option *ngFor="let shop of sneaker.shops"  [value]="shop">
+            {{shop}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <button mat-raised-button color="primary" [disabled]="chooseSize()"><span style="font-size: 16px;" (click)="addCart()">Add in cart</span></button>
     </div>
   </div>

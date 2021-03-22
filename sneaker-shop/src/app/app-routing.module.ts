@@ -7,6 +7,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { ShopsComponent } from './components/shops/shops.component';
 import { SneakerDetailComponent } from './components/sneaker-detail/sneaker-detail.component';
 
 const routes: Routes = [
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sneakers/:id', component: SneakerDetailComponent, canActivate: [AuthGuard] },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] }
+  { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] },
+  { path: 'shops', component: ShopsComponent, canActivate: [AuthGuard] },
+  { path: 'shops/:id', component: ShopsComponent, canActivate: [AuthGuard] }
 
 ];
 

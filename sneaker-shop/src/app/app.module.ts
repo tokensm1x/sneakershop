@@ -19,6 +19,11 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { CabinetComponent } from './components/cabinet/cabinet.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SneakerDetailComponent } from './components/sneaker-detail/sneaker-detail.component';
+import { PasswordComponent } from './components/password/password.component';
+import { DialogMoneyComponent } from './components/dialog-money/dialog-money.component';
+import { DialogBuyComponent } from './components/dialog-buy/dialog-buy.component';
+import { HistoryComponent } from './components/history/history.component';
+import { ShopsComponent } from './components/shops/shops.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,16 +38,6 @@ import { MatInputModule } from '@angular/material/input'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { PasswordComponent } from './components/password/password.component';
-import { DialogMoneyComponent } from './components/dialog-money/dialog-money.component';
-import { DialogBuyComponent } from './components/dialog-buy/dialog-buy.component';
-import { HistoryComponent } from './components/history/history.component';
-
-
-
-
-
-
 
 
 
@@ -59,7 +54,8 @@ import { HistoryComponent } from './components/history/history.component';
     PasswordComponent,
     DialogMoneyComponent,
     DialogBuyComponent,
-    HistoryComponent
+    HistoryComponent,
+    ShopsComponent
   ],
   imports: [
     BrowserModule,
